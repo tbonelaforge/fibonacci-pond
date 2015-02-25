@@ -1,7 +1,27 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "pond.h"
+struct pond {
+    int width;
+    int * pad_locations;
+    int * fibonacci_numbers;
+    int * min_hops;
+};
+
+typedef struct pond * Pond;
+
+Pond new_pond(int);
+void initialize_pond(Pond, int *);
+void fill_fibonacci_numbers(Pond);
+void init_min_hops(Pond);
+void init_pad_locations(Pond, int *);
+int minimize_hops(Pond);
+void fill_min_hops(Pond, int);
+void print_pond(Pond);
+void print_pad_locations(Pond);
+void print_fibonacci_numbers(Pond);
+void print_min_hops(Pond);
+
 
 Pond new_pond(int N) {
     int width = N + 1;
@@ -154,4 +174,34 @@ void print_min_hops(Pond self) {
             printf(", ");
         }
     }
+}
+
+
+int solution(int A[], int N) {
+    Pond pond = new_pond(N);
+    int min_hops;
+
+    initialize_pond(pond, A);
+    min_hops = minimize_hops(pond);
+    return min_hops;
+}
+
+int main() {
+    int A[] = {
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+    };
+    int N = 11;
+    int s = solution(A, N);
+
+    printf("The solution is: %d\n", s);
 }

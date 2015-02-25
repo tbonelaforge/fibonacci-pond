@@ -11,10 +11,15 @@ struct pond {
 typedef struct pond * Pond;
 
 Pond new_pond(int);
-void initialize_pond(Pond, int);
+void initialize_pond(Pond, int *);
 void fill_fibonacci_numbers(Pond);
 void init_min_hops(Pond);
+void init_pad_locations(Pond, int *);
 int minimize_hops(Pond);
 void fill_min_hops(Pond, int);
+void print_pond(Pond);
+void print_pad_locations(Pond);
+void print_fibonacci_numbers(Pond);
+void print_min_hops(Pond);
 
 #endif
